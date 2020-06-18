@@ -1,4 +1,5 @@
 import 'package:favorcate/core/model/category_model.dart';
+import 'package:favorcate/ui/pages/detail/detail_content.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -14,9 +15,7 @@ class DetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(model.title),
       ),
-      body: Container(
-        child: Text(model.title),
-      ),
+      body: DetailContent()
     );
   }
 }

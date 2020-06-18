@@ -1,5 +1,5 @@
 import 'package:favorcate/core/model/category_model.dart';
-import 'package:favorcate/ui/pages/detail/detail.dart';
+import 'package:favorcate/ui/pages/meal/meal.dart';
 import 'package:flutter/material.dart';
 import 'package:favorcate/core/extension/int_extension.dart';
 
@@ -14,7 +14,7 @@ class HomeCategoryItem extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(DetailScreen.routerName, arguments: _categoryModel);
+        Navigator.of(context).pushNamed(MealScreen.routerName, arguments: _categoryModel);
       },
       child: Container(
         decoration: BoxDecoration(
