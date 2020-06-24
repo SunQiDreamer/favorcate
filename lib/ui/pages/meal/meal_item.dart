@@ -1,8 +1,11 @@
 import 'dart:ui';
 
 import 'package:favorcate/core/model/meal_model.dart';
+import 'package:favorcate/core/viewmodel/favor_view_model.dart';
+import 'package:favorcate/ui/pages/detail/detail.dart';
 import 'package:flutter/material.dart';
 import 'package:favorcate/core/extension/int_extension.dart';
+import 'package:provider/provider.dart';
 
 class MealItem extends StatelessWidget {
   final MealModel _mealModel;
@@ -11,12 +14,17 @@ class MealItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Card(
-        child: Column(
-          children: <Widget>[buildBasicInfo(context), buildOperationInfo()],
+    return GestureDetector(
+      child: Container(
+        child: Card(
+          child: Column(
+            children: <Widget>[buildBasicInfo(context), buildOperationInfo()],
+          ),
         ),
       ),
+      onTap: () {
+        Navigator.of(context).pushNamed(DetailScreen.routerName, arguments: _mealModel);
+      },
     );
   }
 
@@ -69,8 +77,22 @@ class MealItem extends StatelessWidget {
   }
 
   Widget buildFavorItem() {
-    return Container(
-      child: Text('1111'),
+    return Consumer<FavorViewModel>(
+      builder: (ctx, favorVM, child) {
+        final iconData = favorVM.isFavor(_mealModel)? Icons.favorite : Icons.favorite_border;
+        final favorColor = favorVM.isFavor(_mealModel)? Colors.red : Colors.black;
+        final title = favorVM.isFavor(_mealModel)? "收藏" : "未收藏";
+
+        return GestureDetector(
+          child: buildOperationItem(Icon(
+            iconData,
+            color: favorColor,
+          ), title),
+          onTap: () {
+            favorVM.handleMeal(_mealModel);
+          },
+        );
+      },
     );
   }
 
