@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+MealModel mealModelFromJson(String str) => MealModel.fromJson(json.decode(str));
+
+String mealModelToJson(MealModel data) => json.encode(data.toJson());
 
 List<String> complexes = ["简单", "中等", "困难"];
 
@@ -52,5 +57,21 @@ class MealModel {
     isVegetarian: json["isVegetarian"],
     isLactoseFree: json["isLactoseFree"],
   );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "categories": List<dynamic>.from(categories.map((x) => x)),
+    "title": title,
+    "affordability": affordability,
+    "complexity": complexity,
+    "imageUrl": imageUrl,
+    "duration": duration,
+    "ingredients": List<dynamic>.from(ingredients.map((x) => x)),
+    "steps": List<dynamic>.from(steps.map((x) => x)),
+    "isGlutenFree": isGlutenFree,
+    "isVegan": isVegan,
+    "isVegetarian": isVegetarian,
+    "isLactoseFree": isLactoseFree,
+  };
 
 }

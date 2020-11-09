@@ -4,7 +4,7 @@ import 'package:favorcate/ui/pages/home/home_drawer.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
-  static final routerName = "/";
+  static const String routeName = "/";
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -21,11 +21,10 @@ class _MainScreenState extends State<MainScreen> {
         index: _currentIndex,
         children: pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+      bottomNavigationBar: BottomNavigationBar(items: items,
+      currentIndex: _currentIndex,
         selectedFontSize: 14,
         unselectedFontSize: 14,
-        items: items,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -36,7 +35,6 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 
-
 final List<Widget> pages = [
   HomeScreen(),
   FavorScreen()
@@ -44,11 +42,11 @@ final List<Widget> pages = [
 
 final List<BottomNavigationBarItem> items = [
   BottomNavigationBarItem(
-    title: Text('首页'),
+    title: Text("首页"),
     icon: Icon(Icons.home)
   ),
   BottomNavigationBarItem(
-      title: Text('收藏'),
+      title: Text("收藏"),
       icon: Icon(Icons.star)
   ),
 ];

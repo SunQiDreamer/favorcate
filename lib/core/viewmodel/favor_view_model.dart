@@ -1,26 +1,26 @@
 import 'package:favorcate/core/model/meal_model.dart';
 import 'package:favorcate/core/viewmodel/base_view_model.dart';
 
-class FavorViewModel extends BaseMealViewModel {
-  addMeal(MealModel mealmodel) {
-    originMeals.add(mealmodel);
+class FavorViewModel extends BaseViewModel {
+  void addMeal(MealModel meal) {
+    originMeals.add(meal);
     notifyListeners();
   }
 
-  removeMeal(MealModel mealModel) {
-    originMeals.remove(mealModel);
+  void removeMeals(MealModel meal) {
+    originMeals.remove(meal);
     notifyListeners();
   }
 
-  handleMeal(MealModel mealModel) {
-    if (isFavor(mealModel)) {
-      removeMeal(mealModel);
+  void handleMeal(MealModel meal) {
+    if (isFavor(meal)) {
+      removeMeals(meal);
     } else {
-      addMeal(mealModel);
+      addMeal(meal);
     }
   }
 
-  bool isFavor(MealModel mealModel) {
-    return originMeals.contains(mealModel);
+  bool isFavor(MealModel meal) {
+    return originMeals.contains(meal);
   }
 }

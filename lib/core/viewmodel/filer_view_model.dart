@@ -13,10 +13,7 @@ class FilterViewModel extends ChangeNotifier {
   // 严格素食主义
   bool _isVegan = false;
 
-  bool get isGlutenFree {
-    print(3333);
-    return _isGlutenFree;
-  }
+  bool get isGlutenFree => _isGlutenFree;
 
   set isGlutenFree(bool value) {
     _isGlutenFree = value;

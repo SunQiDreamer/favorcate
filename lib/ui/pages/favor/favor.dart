@@ -6,9 +6,9 @@ class FavorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("收藏"),
+        title: Text("我的收藏"),
       ),
-      body: FavorContent(),
+      body: FavorContetn(),
     );
   }
 }
